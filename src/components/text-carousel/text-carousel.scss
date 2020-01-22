@@ -11,7 +11,7 @@ img {
 
 fieldset {
   margin: 20px auto 0;
-  max-width: 200px;
+  max-width: 240px;
   border: 0;
   text-align: left;
 
@@ -19,11 +19,20 @@ fieldset {
     display: flex;
     line-height: 32px;
     align-items: center;
+    white-space: nowrap;
 
     & > input:not([type=color]),
     & > select {
       flex: 1;
     }
+  }
+}
+
+.output-label {
+  line-height: 1;
+
+  span {
+    color: transparent;
   }
 }
 

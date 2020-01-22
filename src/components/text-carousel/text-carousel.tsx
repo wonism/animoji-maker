@@ -16,6 +16,7 @@ export class TextCarousel {
   @State() private fontFamily: FontFamlies = 'monospace';
   @State() private interval: number = 300;
   @State() private uploading: boolean = false;
+  @State() private yPos: string = '0';
 
   @Listen('submit')
   private async handleSubmit() {
@@ -30,7 +31,13 @@ export class TextCarousel {
 
     const contexts = await Promise.all(
       textArray.map(async (text) => {
-        const context = await getContextFromText(text, this.fgColor, this.bgColor, this.fontFamily);
+        const context = await getContextFromText(
+          text,
+          this.fgColor,
+          this.bgColor,
+          this.fontFamily,
+          this.yPos
+        );
 
         return context;
       })
@@ -44,7 +51,7 @@ export class TextCarousel {
   }
 
   @Listen('change')
-  private handleChange(e, target: 'text' | 'fgColor' | 'bgColor' | 'fontFamily' | 'interval') {
+  private handleChange(e, target: 'text' | 'fgColor' | 'bgColor' | 'fontFamily' | 'interval' | 'yPos') {
     if (target === 'interval') {
       this[target] = Number(e.target.value.replace(/\D/g, ''));
     } else {
@@ -125,6 +132,30 @@ export class TextCarousel {
                   </option>
                 ))}
               </select>
+            </label>
+
+            <label>
+              <span>
+                Y-Coord:&nbsp;
+              </span>
+              <input
+                type="range"
+                min={-30}
+                max={30}
+                step={1}
+                onClick={(e) => { this.handleChange(e, 'yPos'); }}
+                value={this.yPos}
+              />
+            </label>
+
+            <label class="output-label">
+              <span>
+                Y-Coord:&nbsp;
+              </span>
+              <output>
+                {this.yPos}
+                px
+              </output>
             </label>
           </fieldset>
 

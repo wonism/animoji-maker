@@ -4,7 +4,8 @@ const getContextFromText = (
   text: string,
   fgColor: string,
   bgColor: string,
-  fontFamily: string
+  fontFamily: string,
+  yPos: string
 ) => new Promise<CanvasRenderingContext2D>((resolve) => {
   const canvas = document.createElement('canvas');
 
@@ -22,7 +23,7 @@ const getContextFromText = (
   ctx.textAlign = 'center';
   ctx.textBaseline = 'middle';
   ctx.fillStyle = fgColor;
-  ctx.fillText(text, size / 2, size / 2);
+  ctx.fillText(text, size / 2, (size / 2) + Number(yPos));
 
   resolve(ctx);
 });
