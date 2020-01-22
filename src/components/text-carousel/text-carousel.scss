@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css?family=Lato|Nanum+Gothic|Noto+Sans+KR&display=swap');
+
+img {
+  border: 1px dashed #57BBB3;
+  border-radius: 4px;
+
+  &[src=""] {
+    content: url("data:image/gif;base64,R0lGODlhAQABAPAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==")
+  }
+}
+
+fieldset {
+  margin: 20px auto 0;
+  max-width: 200px;
+  border: 0;
+  text-align: left;
+
+  & > label {
+    display: flex;
+    line-height: 32px;
+    align-items: center;
+
+    & > input:not([type=color]),
+    & > select {
+      flex: 1;
+    }
+  }
+}
+
+.submit {
+  display: inline-block;
+  margin: 20px 0 32px;
+  padding: 12px 24px;
+  color: #fff;
+  background-color: #57BBB3;
+  border: 0;
+  border-radius: 3px;
+  font-weight: 700;
+  box-shadow: inset 0 -3px 0 rgba(0, 0, 0, .1);
+  cursor: pointer;
+  outline: 0;
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  &:hover,
+  &:focus {
+    box-shadow: inset 0 -3px 0 rgba(0, 0, 0, .1), inset 0 -8em 0 rgba(255, 255, 255, .2);
+  }
+
+  &:active {
+    box-shadow: inset 0 -1px 0 rgba(0, 0, 0, .07), inset 0 -8em 0 rgba(0, 0, 0, .15);
+  }
+}

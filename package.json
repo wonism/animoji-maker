@@ -1,0 +1,35 @@
+{
+  "name": "animoji-maker",
+  "version": "0.0.1",
+  "description": "Animoji Maker",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "es2015": "dist/esm/index.mjs",
+  "es2017": "dist/esm/index.mjs",
+  "types": "dist/types/index.d.ts",
+  "collection": "dist/collection/collection-manifest.json",
+  "collection:main": "dist/collection/index.js",
+  "unpkg": "dist/animoji-maker/animoji-maker.js",
+  "files": [
+    "dist/",
+    "loader/"
+  ],
+  "scripts": {
+    "build": "stencil build --docs",
+    "start": "stencil build --dev --watch --serve",
+    "test": "stencil test --spec --e2e",
+    "test.watch": "stencil test --spec --e2e --watchAll",
+    "generate": "stencil generate",
+    "deploy": "push-dir --dir=www --branch=gh-pages"
+  },
+  "devDependencies": {
+    "@stencil/sass": "^1.1.1",
+    "push-dir": "^0.4.1"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@stencil/core": "^1.9.0-12",
+    "gif.js": "^0.2.0",
+    "rxjs": "^6.5.4"
+  }
+}
