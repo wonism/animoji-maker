@@ -34,6 +34,8 @@ const generateFile = (
       workers: 4,
       workerScript: URL.createObjectURL(blob),
       quality: 10,
+      background: 'transparent',
+      transparent: 'transparent',
       width: size,
       height: size,
     });
