@@ -10,6 +10,7 @@
 ### Depends on
 
 - [explosion-maker](../explosion-maker)
+- [rainbow-effect](../rainbow-effect)
 - [text-carousel](../text-carousel)
 - [github-corner](../github-corner)
 
@@ -17,6 +18,7 @@
 ```mermaid
 graph TD;
   app-root --> explosion-maker
+  app-root --> rainbow-effect
   app-root --> text-carousel
   app-root --> github-corner
   explosion-maker --> image-group

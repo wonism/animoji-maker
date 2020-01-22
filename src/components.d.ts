@@ -16,6 +16,7 @@ export namespace Components {
   interface ImageGroup {
     'afterLoad': (images: NodeList) => void;
   }
+  interface RainbowEffect {}
   interface TextCarousel {}
 }
 
@@ -46,6 +47,12 @@ declare global {
     new (): HTMLImageGroupElement;
   };
 
+  interface HTMLRainbowEffectElement extends Components.RainbowEffect, HTMLStencilElement {}
+  var HTMLRainbowEffectElement: {
+    prototype: HTMLRainbowEffectElement;
+    new (): HTMLRainbowEffectElement;
+  };
+
   interface HTMLTextCarouselElement extends Components.TextCarousel, HTMLStencilElement {}
   var HTMLTextCarouselElement: {
     prototype: HTMLTextCarouselElement;
@@ -56,6 +63,7 @@ declare global {
     'explosion-maker': HTMLExplosionMakerElement;
     'github-corner': HTMLGithubCornerElement;
     'image-group': HTMLImageGroupElement;
+    'rainbow-effect': HTMLRainbowEffectElement;
     'text-carousel': HTMLTextCarouselElement;
   }
 }
@@ -67,6 +75,7 @@ declare namespace LocalJSX {
   interface ImageGroup {
     'afterLoad'?: (images: NodeList) => void;
   }
+  interface RainbowEffect {}
   interface TextCarousel {}
 
   interface IntrinsicElements {
@@ -74,6 +83,7 @@ declare namespace LocalJSX {
     'explosion-maker': ExplosionMaker;
     'github-corner': GithubCorner;
     'image-group': ImageGroup;
+    'rainbow-effect': RainbowEffect;
     'text-carousel': TextCarousel;
   }
 }
@@ -88,6 +98,7 @@ declare module "@stencil/core" {
       'explosion-maker': LocalJSX.ExplosionMaker & JSXBase.HTMLAttributes<HTMLExplosionMakerElement>;
       'github-corner': LocalJSX.GithubCorner & JSXBase.HTMLAttributes<HTMLGithubCornerElement>;
       'image-group': LocalJSX.ImageGroup & JSXBase.HTMLAttributes<HTMLImageGroupElement>;
+      'rainbow-effect': LocalJSX.RainbowEffect & JSXBase.HTMLAttributes<HTMLRainbowEffectElement>;
       'text-carousel': LocalJSX.TextCarousel & JSXBase.HTMLAttributes<HTMLTextCarouselElement>;
     }
   }

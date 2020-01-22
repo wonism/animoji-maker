@@ -13,6 +13,8 @@ export class AppRoot {
         <main>
           <explosion-maker />
           <hr />
+          <rainbow-effect />
+          <hr />
           <text-carousel />
         </main>
         <footer>
