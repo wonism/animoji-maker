@@ -45,7 +45,7 @@ export class ExplosionMaker {
             class="empty-image"
             width={size}
             height={size}
-            src={getAssetPath('../../assets/empty.gif')}
+            src={getAssetPath('../../assets/empty.gif').replace(/^\//, '')}
             role="presentation"
             onLoad={(e) => { this.handleLoad(e); }}
           />

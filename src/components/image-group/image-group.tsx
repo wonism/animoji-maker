@@ -33,7 +33,7 @@ export class ImageGroup {
           const src = getAssetPath(`../../assets/explosion-${index + 1}.gif`);
 
           return (
-            <img src={src} role="presentation" onLoad={() => { this.handleLoad(); }} />
+            <img src={src.replace(/^\//, '')} role="presentation" onLoad={() => { this.handleLoad(); }} />
           );
         })}
       </div>
