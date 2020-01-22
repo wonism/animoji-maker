@@ -31,9 +31,11 @@ const getContextFromFile = (file: File, options?: Options) => new Promise<Canvas
       const left = (size - width) / 2;
       const top = (size - height) / 2;
 
+      ctx.globalCompositeOperation = 'source-over';
       ctx.drawImage(image, left, top, width, height);
 
       if (options?.hue != null) {
+        ctx.globalCompositeOperation = 'source-atop';
         ctx.fillStyle = `hsla(${options.hue}, 100%, 50%, ${options.alpha ?? 0.5})`;
         ctx.fillRect(left, top, width, height);
       }
