@@ -143,7 +143,7 @@ export class TextCarousel {
                 min={-30}
                 max={30}
                 step={1}
-                onClick={(e) => { this.handleChange(e, 'yPos'); }}
+                onChange={(e) => { this.handleChange(e, 'yPos'); }}
                 value={this.yPos}
               />
             </label>

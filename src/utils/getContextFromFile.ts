@@ -2,7 +2,7 @@ import { size } from '../constants';
 
 interface Options {
   hue?: number;
-  alpha?: number;
+  alpha?: string;
 }
 
 const getContextFromFile = (file: File, options?: Options) => new Promise<CanvasRenderingContext2D>((resolve, reject) => {

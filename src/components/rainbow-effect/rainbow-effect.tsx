@@ -1,4 +1,4 @@
-import { h, Component, State } from '@stencil/core';
+import { h, Component, State, Listen } from '@stencil/core';
 
 import { size } from '../../constants';
 import getContextFromFile from '../../utils/getContextFromFile';
@@ -8,19 +8,24 @@ import generateFile from '../../utils/generateFile';
 export class RainbowEffect {
   @State() private rainbowImage: string | null = null;
   @State() private uploading: boolean = false;
+  @State() private alpha: string = '0.5';
 
-  private handleChange = async (e: Event) => {
+  @Listen('change')
+  private handleRangeChange(e) {
+    this.alpha = e.target.value;
+  }
+
+  private async handleChange(e: Event) {
     this.uploading = true;
     this.rainbowImage = null;
 
     const file = (e.target as unknown as DataTransfer).files.item(0);
 
-    // const hueArray = new Array(36).fill(10).map((e, i) => e * i);
     const hueArray = new Array(360 / 15).fill(15).map((e, i) => e * i);
     const contexts = await Promise.all(
       hueArray.map(async (hue) => {
         const context = await getContextFromFile(
-          file, { hue }
+          file, { hue, alpha: this.alpha }
         )
 
         return context;
@@ -47,12 +52,38 @@ export class RainbowEffect {
             role="presentation"
           />
         </div>
+
+        <fieldset>
+          <label>
+            <span>
+              Alpha(0.1-1):&nbsp;
+            </span>
+            <input
+              type="range"
+              min={0.1}
+              max={1}
+              step={0.1}
+              onChange={this.handleRangeChange}
+              value={this.alpha}
+            />
+          </label>
+
+          <label class="output-label">
+            <span>
+              Alpha(0.1-1):&nbsp;
+            </span>
+            <output>
+              {this.alpha}
+            </output>
+          </label>
+        </fieldset>
+
         <label>
           <input
             id="rainbow-target"
             type="file"
             accept="image/*"
-            onChange={this.handleChange}
+            onChange={(e) => { this.handleChange(e); }}
             disabled={this.uploading}
           />
           <span>
